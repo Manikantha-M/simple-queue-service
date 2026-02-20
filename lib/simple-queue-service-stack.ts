@@ -34,7 +34,7 @@ export class SimpleQueueServiceStack extends cdk.Stack {
     });
 
     consumerLambda.addEventSource(new lambdaEventSources.SqsEventSource(queue, {
-      batchSize: 1
+      batchSize: 10
     }))
     const api = new apigateway.RestApi(this, 'OrdersAPI');
     const orders = api.root.addResource('orders');
